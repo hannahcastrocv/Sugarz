@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-base text-ink font-body antialiased;
+    background-image:
+      radial-gradient(900px 500px at 12% -8%, rgba(255, 77, 125, 0.08), transparent 60%),
+      radial-gradient(900px 600px at 100% 0%, rgba(162, 89, 255, 0.08), transparent 55%);
+    background-attachment: fixed;
+  }
+
+  /* Pixel art must never blur when scaled. */
+  .pixelated {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    shape-rendering: crispEdges;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0b0f1e;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #262e52;
+    border-radius: 8px;
+    border: 2px solid #0b0f1e;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #33406e;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #ff4d7d;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* Card shell used across the dashboard. */
+  .panel {
+    @apply rounded-card border border-line bg-panel shadow-card;
+  }
+  .panel-2 {
+    @apply rounded-xl border border-line bg-panel2;
+  }
+
+  /* Section eyebrow title, pixel font, colored accent. */
+  .eyebrow {
+    @apply font-pixel text-[11px] leading-none tracking-wide;
+  }
+
+  .label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-faint;
+  }
+
+  .divider {
+    @apply h-px w-full bg-line;
+  }
+
+  /* A crisp pixel-bordered chip. */
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-md border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide;
+  }
+
+  /* Muted value placeholder used for Coming Soon / TBA. */
+  .placeholder-value {
+    @apply text-muted;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .grain {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+}
+
+/* Respect reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
