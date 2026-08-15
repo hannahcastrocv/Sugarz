@@ -4,7 +4,6 @@ import { X } from "lucide-react";
 import Sidebar from "./Sidebar.jsx";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
-import WalletModal from "../modals/WalletModal.jsx";
 
 export default function Layout() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -63,7 +62,6 @@ export default function Layout() {
         <Footer />
       </div>
 
-      <WalletModal />
     </div>
   );
 }
