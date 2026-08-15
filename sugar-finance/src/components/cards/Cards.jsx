@@ -5,11 +5,15 @@ import ArtIcon from "../art/ArtIcon.jsx";
 import { SugarCoin } from "../icons/SugarBrand.jsx";
 import NFTPlaceholder from "../art/NFTPlaceholder.jsx";
 import { Badge } from "../ui/Primitives.jsx";
+import usdgLogo from "../../assets/brand/usdg.png";
+import ethLogo from "../../assets/brand/eth.png";
 
 // --- Token + token-pair icons -------------------------------------------------
 export function TokenIcon({ token, size = 24 }) {
-  if (token === "usdg") return <PixelIcon name="usdg" size={size} />;
-  if (token === "eth") return <PixelIcon name="eth" size={size} />;
+  if (token === "usdg")
+    return <img src={usdgLogo} alt="USDG" width={size} height={size} draggable={false} style={{ width: size, height: size, objectFit: "contain" }} />;
+  if (token === "eth")
+    return <img src={ethLogo} alt="ETH" width={size} height={size} draggable={false} style={{ width: size, height: size, objectFit: "contain" }} />;
   return <SugarCoin size={size} />;
 }
 
