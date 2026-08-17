@@ -1,6 +1,5 @@
-import { NETWORK, LINKS, LAUNCH_STATUS, resolvedLink } from "../../config/siteConfig.js";
+import { NETWORK, LINKS, LAUNCH_STATUS } from "../../config/siteConfig.js";
 import PixelIcon from "../icons/PixelIcon.jsx";
-import { useToast } from "../../context/ToastContext.jsx";
 
 function XLogo({ size = 16 }) {
   return (
@@ -18,16 +17,6 @@ const FACTS = [
 ];
 
 export default function Footer() {
-  const { notify } = useToast();
-  const xUrl = resolvedLink(LINKS.X_URL);
-
-  const onX = (e) => {
-    if (!xUrl) {
-      e.preventDefault();
-      notify("X link coming soon", { body: "The social link is published after launch.", tone: "info" });
-    }
-  };
-
   return (
     <footer className="mt-8 border-t border-line bg-base/60">
       <div className="flex flex-col gap-5 px-4 py-5 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
@@ -47,26 +36,14 @@ export default function Footer() {
 
         <div className="flex items-center gap-3">
           <a
-            href={xUrl || "#"}
-            onClick={onX}
-            target={xUrl ? "_blank" : undefined}
+            href={LINKS.X_URL}
+            target="_blank"
             rel="noreferrer"
             className="grid h-10 w-10 place-items-center rounded-lg border border-line2 bg-panel2 text-ink transition hover:border-sugar-pink/50 hover:text-sugar-pink"
             aria-label="Sugar Finance on X"
           >
             <XLogo />
           </a>
-          <button
-            onClick={() => notify("Docs coming soon", { body: "Documentation is published after launch.", tone: "info" })}
-            className="grid h-10 w-10 place-items-center rounded-lg border border-line2 bg-panel2 text-ink transition hover:border-sugar-pink/50 hover:text-sugar-pink"
-            aria-label="Sugar Finance docs"
-          >
-            <svg viewBox="0 0 24 24" width={17} height={17} fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-              <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z" />
-              <path d="M9 9h1M9 13h6M9 17h6" />
-            </svg>
-          </button>
         </div>
       </div>
     </footer>
